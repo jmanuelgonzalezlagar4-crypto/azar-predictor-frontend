@@ -1,0 +1,91 @@
+/* style.css */
+:root {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --neon-blue: #00e5ff; /* Color principal para acentos */
+    --neon-green: #39ff14; /* Color para resultados óptimos */
+    --neon-gold: #ffcc00; /* Color para premium */
+    --font-stack: 'Roboto Mono', monospace;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: #fff;
+    font-family: var(--font-stack);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* EFECTO NEÓN */
+.neon-text-blue {
+    color: #fff;
+    text-shadow: 0 0 5px var(--neon-blue), 0 0 15px var(--neon-blue);
+}
+.neon-text-green {
+    color: var(--neon-green);
+    text-shadow: 0 0 5px var(--neon-green), 0 0 15px var(--neon-green);
+}
+
+/* BOTONES Y NAVEGACIÓN */
+.nav-btn {
+    background: var(--card-bg);
+    color: #fff;
+    border: 1px solid var(--neon-blue);
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.premium-access-btn {
+    background: var(--neon-gold);
+    color: black;
+    font-weight: bold;
+    border: none;
+}
+
+/* ESTRUCTURA Y VISIBILIDAD */
+.screen {
+    padding: 20px 0;
+}
+.hidden {
+    display: none !important;
+}
+
+/* TARJETAS DE IA */
+.ia-card {
+    background-color: var(--card-bg);
+    border-left: 5px solid var(--neon-green);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.1); 
+}
+
+.ia-numbers span {
+    display: inline-block;
+    background: var(--neon-blue);
+    color: black;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    margin-right: 8px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.cta-button {
+    padding: 15px 30px;
+    background-color: var(--neon-green);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
