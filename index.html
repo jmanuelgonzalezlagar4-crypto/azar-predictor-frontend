@@ -1,26 +1,23 @@
-// 1. LÓGICA DE LA CONEXIÓN A LA API
-async function generarIA() {
-    try {
-        // Muestra un mensaje de cálculo mientras espera la respuesta del servidor
-        const resultsDiv = document.getElementById('ia-results');
-        resultsDiv.innerHTML = '<p class="neon-text-green">Calculando... Analizando la Entropía...</p>'; 
+// 2. LÓGICA PARA PINTAR LOS RESULTADOS EN LA WEB
+function mostrarResultadosIA(combinaciones) {
+    const resultsDiv = document.getElementById('ia-results');
+    resultsDiv.innerHTML = ''; // Limpiar resultados anteriores
 
-        // 🌟 LÍNEA CLAVE: UNE LA BASE CON LA RUTA DE LA IA 🌟
-        const response = await fetch(`${API_BASE_URL}/api/generar_ia`); 
+    combinaciones.forEach(c => {
+        // Mapea los números a spans con estilo neón
+        const numbersHtml = c.combinacion.map(n => 
+            `<span class="neon-text-green">${n}</span>`
+        ).join('');
         
-        if (!response.ok) {
-            // Si el servidor devuelve un 404 o 500
-            throw new Error(`Error ${response.status}: El Motor IA no encontró la ruta.`);
-        }
-
-        const data = await response.json();
-        
-        // Muestra los resultados en el diseño Premium
-        mostrarResultadosIA(data.data); 
-
-    } catch (error) {
-        // Si falla la conexión o la ruta
-        document.getElementById('ia-results').innerHTML = `<p style="color: red;">⚠️ Fallo de Ruta: El servidor respondió a la ruta raíz.</p>`;
-        console.error("Error en la conexión:", error);
-    }
+        const cardHtml = `
+            <div class="ia-card">
+                <p class="ia-numbers">
+                    ${numbersHtml}
+                </p>
+                <p>🎯 <strong>Puntaje de Calidad: ${c.calidad_score}/100</strong></p>
+                <small>Suma: ${c.suma} | Composición: ${c.composicion}</small>
+            </div>
+        `;
+        resultsDiv.innerHTML += cardHtml;
+    });
 }
